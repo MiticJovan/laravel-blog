@@ -16,7 +16,7 @@
 
 //Route::resource('/', 'PostsController');
 
-Route::get('/', 'PostsController@index');
+Route::get('/', 'PostsController@index')->name('home');
 
 Route::get('/posts/create', 'PostsController@create');
 
@@ -31,6 +31,8 @@ Route::get('/register','RegistrationController@create');
 Route::post('/register','RegistrationController@store');
 
 Route::get('/login', 'SessionsController@create');
+
+Route::post('/login', 'SessionsController@store');
 
 Route::get('/logout', 'SessionsController@destroy');
 

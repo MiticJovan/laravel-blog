@@ -7,6 +7,12 @@ use Illuminate\Http\Request;
 
 class PostsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth')->except(['index','show']);
+    }
+
+
     public function index() {
 
         $posts = Post::latest()->get();
@@ -28,6 +34,7 @@ class PostsController extends Controller
     }
     public function store() {
 
+
         $this ->validate(request(), [
 
                 'title' => 'required',
@@ -35,8 +42,9 @@ class PostsController extends Controller
 
             ]);
 
-        Post::create(request(['title', 'body']));
-
+        auth()->user()->publish(
+            new Post(request(['title','body']))
+        );
         // And then redirect to the home page
 
         return redirect('/');

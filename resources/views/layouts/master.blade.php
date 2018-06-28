@@ -24,7 +24,7 @@
 
 <div class="container">
 
-        @include('layouts.header')
+        @include('layouts.nav')
 
         <div class="row">
         @yield('content')
