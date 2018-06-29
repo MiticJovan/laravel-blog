@@ -38,4 +38,5 @@ class User extends Authenticatable
 //           'user_id' => auth()->id()
 //        ]);
     }
+
 }
