@@ -49,5 +49,9 @@ class Post extends Model
 
             ->toArray();
     }
+    public function tags() {
 
+        return $this->belongsToMany(Tag::class);
+
+    }
 }

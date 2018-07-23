@@ -6,5 +6,12 @@
 body {
   font-family: Georgia, "Times New Roman", Times, serif;
   color: #555;
-  background: #2ab27b;
+  background: lightgray;
+}
+#flash-message {
+
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  z-index: 10;
 }

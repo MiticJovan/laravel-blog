@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 use App\Post;
+use Carbon\Carbon;
+
+
 
 
 class PostsController extends Controller
@@ -12,7 +15,9 @@ class PostsController extends Controller
     }
 
 
-    public function index() {
+    public function index(\App\Tag $tag = null) {
+
+          return $tag->posts;
 
           $posts = Post::latest()
           ->filter(request(['month','year']))
@@ -49,7 +54,10 @@ class PostsController extends Controller
         auth()->user()->publish(
             new Post(request(['title','body']))
         );
-        // And then redirect to the home page
+
+        session()->flash(
+            'message','Your post has been published'
+        );
 
         return redirect('/');
 
